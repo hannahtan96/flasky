@@ -108,7 +108,6 @@ def add_menu_to_breakfast(breakfast_id):
 
 #     return jsonify({"msg": f"Breakfast {chosen_breakfast.name} successfully updated"}), 200
 
-@breakfast_bp.route("")
 @breakfast_bp.route("/<breakfast_id>", methods=["DELETE"])
 def delete_one_breakfast(breakfast_id):
     chosen_breakfast = get_model_from_id(Breakfast, breakfast_id)
