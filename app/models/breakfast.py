@@ -14,9 +14,8 @@ class Breakfast(db.Model):
             "name": self.name,
             "rating": self.rating,
             "prep_time": self.prep_time,
-            "menu_id": self.menu_id
         }
-        if self.menu:
+        if self.menu_id:
             breakfast_dict["menu_id"]: self.menu_id
 
         return breakfast_dict
