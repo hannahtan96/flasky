@@ -80,7 +80,7 @@ def add_menu_to_breakfast(breakfast_id):
     request_body = request.get_json()
 
     try:
-        menu_id = request["menu_id"]
+        menu_id = request_body["menu_id"]
     except:
         return jsonify({"msg": f"Missing menu id"}), 400
 
