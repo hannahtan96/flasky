@@ -21,6 +21,9 @@ def create_a_menu():
         restaurant=request_body.get("restaurant_name"),
         meal=request_body.get("meal")
     )
+    
+    db.session.add(new_menu)
+    db.session.commit()
 
     return jsonify({"msg": f"Successfully created menu for {new_menu.restaurant}"}), 200
 
