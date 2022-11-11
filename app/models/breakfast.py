@@ -14,6 +14,7 @@ class Breakfast(db.Model):
             "name": self.name,
             "rating": self.rating,
             "prep_time": self.prep_time,
+            "menu_id": self.menu_id
         }
         if self.menu:
             breakfast_dict["menu_id"]: self.menu_id
@@ -22,7 +23,6 @@ class Breakfast(db.Model):
 
     @classmethod
     def from_dict(cls, breakfast_dict):
-
         return cls(
             name=breakfast_dict["name"],
             rating=breakfast_dict["rating"],
