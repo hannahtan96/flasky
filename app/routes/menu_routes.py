@@ -18,11 +18,11 @@ def get_all_menus():
 def create_a_menu():
     request_body = request.get_json()
     new_menu = Menu(
-        restaurant_name=request_body.get["restaurant_name"],
+        restaurant=request_body.get("restaurant_name"),
         meal=request_body.get("meal")
     )
 
-    return jsonify({"msg": f"Successfully created menu for {new_menu.restaurant_name}"}), 200
+    return jsonify({"msg": f"Successfully created menu for {new_menu.restaurant}"}), 200
 
 
 @menu_bp.route("/<menu_id>/breakfasts", methods=["GET"])
@@ -42,4 +42,4 @@ def delete_menu(menu_id):
     db.session.delete(menu)
     db.session.commit()
 
-    return jsonify({"msg": f"Menu for restaurant {menu.restaurant_name} was successfully deleted"}), 200
+    return jsonify({"msg": f"Menu for restaurant {menu.restaurant} was successfully deleted"}), 200

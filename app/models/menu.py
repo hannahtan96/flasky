@@ -9,7 +9,7 @@ class Menu(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "restaurant_name": self.restaurant_name,
+            "restaurant_name": self.restaurant,
             "meal": self.meal,
             "breakfast_items": self.get_breakfast_list()
         }
