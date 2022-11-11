@@ -9,13 +9,16 @@ class Breakfast(db.Model):
     menu = db.relationship('Menu', back_populates='breakfast_items')
 
     def to_dict(self):
-        return {
+        breakfast_dict = {
             "id": self.id,
             "name": self.name,
             "rating": self.rating,
             "prep_time": self.prep_time,
-            "menu_id": self.menu_id
         }
+        if self.menu:
+            breakfast_dict["menu_id"]: self.menu_id
+
+        return breakfast_dict
 
     @classmethod
     def from_dict(cls, breakfast_dict):
