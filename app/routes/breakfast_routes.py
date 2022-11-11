@@ -114,5 +114,5 @@ def delete_one_breakfast(breakfast_id):
     chosen_breakfast = get_model_from_id(Breakfast, breakfast_id)
 
     db.session.delete(chosen_breakfast)
-    db.session.commit()å
+    db.session.commit()
     return jsonify({"msg": f"Breakfast {chosen_breakfast.name} successfully deleted"}), 200
