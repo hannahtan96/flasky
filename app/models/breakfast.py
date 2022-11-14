@@ -7,6 +7,7 @@ class Breakfast(db.Model):
     prep_time = db.Column(db.Integer)
     menu_id = db.Column(db.Integer, db.ForeignKey('menu.id'), default=None)
     menu = db.relationship('Menu', back_populates='breakfast_items')
+    ingredients = db.relationship('Ingredient', secondary='breakfast_ingredient', back_populates='breakfast_items')
 
     def to_dict(self):
         breakfast_dict = {
@@ -19,7 +20,13 @@ class Breakfast(db.Model):
             breakfast_dict["menu_id"] = self.menu_id
             # breakfast_dict["restaurant"] = self.menu.restaurant
 
+        if self.ingredients:
+            breakfast_dict["ingredients"] = self.get_all_ingredients()
+
         return breakfast_dict
+
+    def get_all_ingredients(self):
+        return [ingredient.to_dict() for ingredient in self.ingredients]
 
     @classmethod
     def from_dict(cls, breakfast_dict):

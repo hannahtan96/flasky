@@ -15,8 +15,5 @@ class Menu(db.Model):
         }
 
     def get_breakfast_list(self):
-        list_of_breakfast = []
-        for item in self.breakfast_items:
-            list_of_breakfast.append(item.to_dict())
-        return list_of_breakfast
+        return [item.to_dict() for item in self.breakfast_items]
 
